@@ -10,7 +10,7 @@ local function RunSpeedLimit()
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             local maxSpeed = kiraMaxspeed(250) -- max speed 250
             SetVehicleMaxSpeed(vehicle, maxSpeed)
-            if not IsPedSittingInAnyVehicle(PlayerPedId()) then
+            if not cache.vehicle then
                 break
             end
         end
