@@ -7,7 +7,7 @@ local function RunSpeedLimit()
     CreateThread(function()
         while true do
             Wait(100)
-            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+            local vehicle = cache.vehicle
             local maxSpeed = kiraMaxspeed(250) -- max speed 250
             SetVehicleMaxSpeed(vehicle, maxSpeed)
             if not cache.vehicle then
@@ -17,4 +17,8 @@ local function RunSpeedLimit()
     end)        
 end
 
-lib.onCache('vehicle', RunSpeedLimit)
+lib.onCache('seat', function(value)
+    if value == -1 then
+        RunSpeedLimit()
+    end
+end)
