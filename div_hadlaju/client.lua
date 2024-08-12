@@ -5,14 +5,11 @@ end
 
 local function RunSpeedLimit()
     CreateThread(function()
-        while true do
+        while cache.vehicle do
             Wait(100)
             local vehicle = cache.vehicle
             local maxSpeed = kiraMaxspeed(250) -- max speed 250
             SetVehicleMaxSpeed(vehicle, maxSpeed)
-            if not cache.vehicle then
-                break
-            end
         end
     end)        
 end
